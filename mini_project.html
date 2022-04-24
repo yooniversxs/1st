@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('h1.mytitle').fadeIn(2000);
+    });
+    $(document).ready(function () {
+        $('button.mybtn').fadeIn(4000);
+    });
+
+
+        window.onload = function() {
+            let elm = ".box";
+            $(elm).each(function (index) {
+                //휠이벤트 적용
+                $(this).on('mousewheel', function (e) {
+                    e.preventDefault();
+                    let delta = 0;
+                    if (!event) event = window.event;
+                    if (event.wheelDelta) {
+                        delta = event.wheelDelta / 120;
+                        if (window.opera) delta = -delta;
+                    }
+                    else if (event.detail)
+                        delta = -event.delta / 3;
+                    let moveTop = $(window).scrollTop();
+                    let elmSelecter = $(elm).eq(index);
+                    // 마우스휠을 위에서 아래로 할 때 이벤트 처리
+                    if (delta < 0) {
+                        if ($(elmSelecter).next() != undefined) {
+                            try {
+                                moveTop = $(elmSelecter).next().offset().top;
+                            } catch(e){}
+                        }
+                        //마우스휠을 아래에서 위로 할 때 이벤트 처리
+                    } else {
+                        if ($(elmSelecter).prev() != undefined) {
+                            try {
+                                moveTop = $(elmSelecter).prev().offset().top;
+                            } catch(e){}
+                        }
+                    }
+                    //화면 이동 0.3초(300)
+                    $("html, body").stop().animate({
+                        scrollTop: moveTop + 'px'
+                    }, {
+                        duration: 300, complete: function () {
+                        }
+                    });
+                });
+            });
+        }
+
+
+
+
+
+
+
+
+
+
+</script>
+
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .myback {
+        background-image: url("https://post-phinf.pstatic.net/MjAxOTA2MThfMjEg/MDAxNTYwODQ4MjQxNTk0.vEXD42hxZBN_f9N__UUj9Vb6JKw6Z2TIOsc9rcn_ETog.Mp51nbRhHdsavQ8IZzK7nR6vHQX_x0UpWx-roNfFOsEg.JPEG/milky-way-984286_1280.jpg?type=w1200");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 800px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mytitle {
+        color: white;
+        display: none;
+    }
+
+    .mybtn {
+        width: 200px;
+        height: 50px;
+
+        background-color: transparent;
+        color: white;
+
+        border-radius: 50px;
+        border: 1px solid white;
+
+        display: none;
+    }
+
+    .myteam {
+        height: 400px;
+        background-color: green;
+    }
+
+    .mycards {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+</style>
+<body>
+<div class="myback">
+    <h1 class="mytitle">개발이라는 우주에 떠오르는 4개의 별</h1>
+    <button class="mybtn">2JUNG2YOON</button>
+</div>
+<div class="myteam">
+    <h1>팀소개</h1>
+</div>
+<wrap class="mycards">
+    <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+             role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>
+                Placeholder</title>
+            <rect width="100%" height="100%" fill="#777"></rect>
+            <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+        </svg>
+
+        <h2>Heading</h2>
+        <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second
+            column.</p>
+        <p><a class="btn btn-secondary" href="#">View details »</a></p>
+    </div>
+    <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+             role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>
+                Placeholder</title>
+            <rect width="100%" height="100%" fill="#777"></rect>
+            <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+        </svg>
+
+        <h2>Heading</h2>
+        <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second
+            column.</p>
+        <p><a class="btn btn-secondary" href="#">View details »</a></p>
+    </div>
+    <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+             role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>
+                Placeholder</title>
+            <rect width="100%" height="100%" fill="#777"></rect>
+            <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+        </svg>
+
+        <h2>Heading</h2>
+        <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second
+            column.</p>
+        <p><a class="btn btn-secondary" href="#">View details »</a></p>
+    </div>
+    <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+             role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>
+                Placeholder</title>
+            <rect width="100%" height="100%" fill="#777"></rect>
+            <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+        </svg>
+
+        <h2>Heading</h2>
+        <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second
+            column.</p>
+        <p><a class="btn btn-secondary" href="#">View details »</a></p>
+    </div>
+</wrap>
+
+</body>
+</html>
+
